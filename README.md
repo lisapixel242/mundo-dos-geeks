@@ -29,3 +29,7 @@ O GitHub Pages hospeda sites estáticos em repositórios públicos no plano grat
 
 ## Privacidade
 Não há conta, analytics, anúncios ou coleta própria de dados. Preferências e playlist são armazenadas no `localStorage` do navegador.
+
+
+### Destinos para ouvir músicas
+Os botões Spotify e YouTube abrem uma busca pelo título da faixa e pelo artista em cada plataforma. A disponibilidade depende do catálogo e da região.
