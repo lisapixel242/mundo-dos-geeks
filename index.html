@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0c0b14">
+<meta name="description" content="Mundo dos Geeks: descubra rap geek, acompanhe artistas e monte sua playlist. Projeto independente e sem fins lucrativos.">
+<title>Mundo dos Geeks</title>
+<style>
+:root{color-scheme:dark;--bg:#0c0b14;--surface:#151421;--surface2:#201d30;--line:#302b43;--txt:#f7f4ff;--muted:#aaa4bd;--violet:#9872ff;--pink:#ed65b2;--mint:#8ee2bb}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#33245b 0,transparent 38%),var(--bg);color:var(--txt);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+header{position:sticky;top:0;z-index:10;background:#0c0b14eF;backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top{max-width:1120px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,var(--violet),var(--pink));font-size:23px}.brand h1{font-size:20px;letter-spacing:-.7px;margin:0}.brand small{color:var(--muted)}
+a{color:#cbbaff}button,input{font:inherit}.wrap{max-width:1120px;margin:26px auto 70px;padding:0 20px}
+.hero{border:1px solid #42365e;border-radius:23px;padding:28px;background:linear-gradient(115deg,#292044,#171522 62%,#311c36);position:relative;overflow:hidden}.hero:after{content:"♫";position:absolute;right:35px;top:-38px;font-size:180px;color:#ffffff0b;transform:rotate(12deg)}.eyebrow{color:#c7b4ff;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h2{font-size:clamp(27px,5vw,42px);letter-spacing:-1.5px;margin:9px 0}.hero p{max-width:680px;color:#c2bbd2;line-height:1.65;margin:0}
+nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px 0 28px}.tab,.btn{border:1px solid var(--line);border-radius:12px;padding:10px 15px;background:var(--surface);color:var(--muted);font-weight:750;cursor:pointer}.tab.active,.btn.primary{background:linear-gradient(120deg,var(--violet),#7955d4);color:white;border-color:transparent}.btn{font-size:13px}.btn:hover,.tab:hover{filter:brightness(1.12)}.btn:disabled{opacity:.55;cursor:wait}
+.page{display:none}.page.active{display:block}.heading{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;margin:26px 0 14px}.heading h2{margin:0;font-size:23px}.heading p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}.card{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:13px;display:flex;flex-direction:column}.art{height:150px;width:100%;border-radius:12px;object-fit:cover;background:linear-gradient(135deg,#43316d,#9b4f8b)}.placeholder{height:150px;border-radius:12px;background:linear-gradient(135deg,#43316d,#9b4f8b);display:grid;place-items:center;font-size:38px}.card h3{font-size:15px;margin:12px 0 4px;line-height:1.35}.meta{font-size:12px;color:var(--muted)}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}.chip{font-size:10px;padding:5px 8px;border-radius:20px;background:#30264a;color:#d9ccff}.card-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:auto;padding-top:12px}.card-actions .btn{flex:1}.audio{width:100%;height:34px;margin-top:10px;accent-color:var(--violet)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:17px;padding:17px}.muted{color:var(--muted)}.notice{padding:12px 14px;border:1px solid #62502c;background:#2a2418;color:#f0d9a5;border-radius:12px;font-size:12px;line-height:1.55;margin:14px 0}.status{font-size:12px;color:var(--muted);min-height:18px}.status.error{color:#ffb1b1}.searchrow{display:flex;gap:9px;margin:14px 0}.searchrow input,.textinput{min-width:0;flex:1;background:#100f19;color:var(--txt);border:1px solid var(--line);border-radius:11px;padding:12px;outline:none}.searchrow input:focus,.textinput:focus{border-color:var(--violet)}
+.artist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:9px;margin:14px 0}.artist{display:flex;align-items:center;gap:9px;background:var(--surface2);border:1px solid var(--line);padding:11px;border-radius:12px;font-size:13px}.artist input{accent-color:var(--violet);width:17px;height:17px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:15px;grid-column:1/-1}.lyricrow{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.lyricrow:last-child{border:0}
+footer{border-top:1px solid var(--line);padding:23px 20px;text-align:center;color:var(--muted);font-size:12px;line-height:1.7}footer strong{color:#e7defc}.about{display:inline-block;margin-top:5px;color:#cbbaff;text-decoration:underline;cursor:pointer;background:none;border:0}
+dialog{background:var(--surface);color:var(--txt);border:1px solid var(--line);border-radius:18px;max-width:520px;width:calc(100% - 30px);padding:22px}dialog::backdrop{background:#000b}.close{float:right}
+@media(max-width:600px){.top{padding:13px 16px}.wrap{padding:0 14px;margin-top:17px}.hero{padding:22px}.hero:after{right:0;font-size:120px}.tab{flex:1;padding:10px 7px;font-size:12px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:9px}.art,.placeholder{height:112px}.card h3{font-size:13px}.card-actions{flex-direction:column}.card-actions .btn{width:100%}.heading h2{font-size:20px}}
+</style>
+</head>
+<body>
+<header><div class="top"><div class="brand"><div class="logo">🎧</div><div><h1>Mundo dos Geeks</h1><small>Rap geek, descobertas e comunidade</small></div></div><button class="btn" id="artistShortcut">♡ Meus artistas</button></div></header>
+<main class="wrap">
+<section class="hero"><div class="eyebrow">Projeto independente • Rap Geek</div><h2>Seu próximo rap favorito pode estar aqui.</h2><p>Descubra sons, encontre artistas com a sua vibe e monte uma playlist do seu jeito. Feito por diversão, para quem curte música e cultura geek.</p></section>
+<nav aria-label="Seções"><button class="tab active" data-page="music">🎵 Músicas</button><button class="tab" data-page="playlist">📂 Minha playlist</button><button class="tab" data-page="lyrics">📖 Letras</button></nav>
+
+<section id="music" class="page active">
+<div class="heading"><div><h2>Descobrir músicas</h2><p>Resultados reais de catálogos musicais conectados.</p></div><button class="btn" id="editArtists">Editar artistas ♥</button></div>
+<div class="panel" id="artistPanel" hidden><h3 style="margin:0">Seus artistas favoritos</h3><p class="muted" style="font-size:12px">Escolha artistas. O recomendador combina os nomes e temas associados para buscar faixas parecidas.</p><div id="artistOptions" class="artist-grid"></div><button class="btn primary" id="saveArtists">Salvar e recomendar</button></div>
+<div class="notice">Os resultados dependem dos catálogos conectados. A seção “Mais ouvidas” representa tendências dentro do Audius, não um ranking mundial de todas as plataformas. Lançamentos são ordenados pela data informada pela loja.</div>
+<div class="heading"><div><h2>🆕 Recentemente lançadas</h2><p>Faixas recentes encontradas no catálogo do iTunes.</p></div><button class="btn" id="refreshNew">Atualizar</button></div><div class="status" id="newStatus">Carregando novidades...</div><div class="grid" id="newGrid"></div>
+<div class="heading"><div><h2>🔥 Em alta</h2><p>Faixas em tendência no Audius.</p></div><button class="btn" id="refreshHot">Atualizar</button></div><div class="status" id="hotStatus">Carregando tendências...</div><div class="grid" id="hotGrid"></div>
+<div class="heading"><div><h2>✨ Feitas para sua vibe</h2><p>Busca por artistas favoritos e temas relacionados.</p></div><button class="btn" id="refreshForYou">Atualizar</button></div><div class="status" id="youStatus"></div><div class="grid" id="youGrid"></div>
+<div class="heading"><div><h2>🔎 Buscar no catálogo</h2><p>Pesquise por faixa ou artista.</p></div></div><div class="searchrow"><input id="catalogSearch" type="search" placeholder="Ex.: M4rkim, rap do Gojo..."><button class="btn primary" id="doSearch">Buscar</button></div><div class="status" id="searchStatus"></div><div class="grid" id="searchGrid"></div>
+</section>
+
+<section id="playlist" class="page">
+<div class="heading"><div><h2>Minha playlist</h2><p>Salva neste navegador e neste dispositivo.</p></div><span class="chip" id="count">0 faixas</span></div><div class="notice">A playlist não sincroniza entre aparelhos porque este projeto não exige conta nem coleta dados pessoais. Se limpar os dados do navegador, a playlist pode ser apagada.</div><div class="grid" id="playlistGrid"></div>
+</section>
+
+<section id="lyrics" class="page">
+<div class="heading"><div><h2>Encontrar letras</h2><p>Pesquise a música e abra uma fonte externa.</p></div></div><div class="notice">O site não republica letras completas protegidas por direitos autorais. A pesquisa leva a páginas externas que disponibilizam as letras.</div><div class="searchrow"><input id="lyricSearch" type="search" placeholder="Nome da música ou artista"><button class="btn primary" id="lyricButton">Pesquisar</button></div><div class="panel" id="lyricResult"><span class="muted">Digite uma música para pesquisar.</span></div>
+</section>
+</main>
+<footer><strong>Mundo dos Geeks</strong><br>Projeto independente, sem fins lucrativos e feito por diversão. Não somos afiliados aos artistas, gravadoras ou plataformas citadas.<br>Os dados musicais e imagens são fornecidos pelos serviços de origem. Prévias e links respeitam a disponibilidade de cada catálogo.<br><button class="about" id="aboutButton">Sobre o projeto</button></footer>
+<dialog id="aboutDialog"><button class="btn close" id="closeAbout">Fechar</button><h2>Sobre o Mundo dos Geeks</h2><p>O Mundo dos Geeks é um projeto independente criado por fãs para descobrir e organizar rap geek. Não vendemos músicas, não cobramos pelo uso e não temos fins lucrativos. A ideia é compartilhar descobertas e apoiar os artistas, direcionando as pessoas às plataformas de origem.</p><p class="muted">As músicas, capas e metadados pertencem aos respectivos titulares e serviços. O site não hospeda arquivos musicais.</p></dialog>
+<script>
+const API_ITUNES='https://itunes.apple.com/search';
+const API_AUDIUS='https://api.audius.co/v1';
+const CACHE_MS=30*60*1000;
+const artistData=[
+ ['AniRap',['anime','ação','poder','personagens'],['M4rkim','7 Minutoz']],
+ ['M4rkim',['anime','batalha','personagens','intensidade'],['AniRap','Enygma']],
+ ['Enygma',['anime','conflito','rei','superação'],['M4rkim','Raphyx']],
+ ['Raphyx',['anime','batalha','força','ação'],['M4rkim','AniRap']],
+ ['7 Minutoz',['anime','ação','superação','personagens'],['AniRap','Player Tauz']],
+ ['VMZ',['anime','personagens','emoção'],['AniRap','Enygma']],
+ ['Player Tauz',['anime','personagens','batalha'],['7 Minutoz','M4rkim']],
+ ['Basara',['anime','ação','intensidade'],['Raphyx','Enygma']],
+ ['Kaito',['anime','personagens','batalha'],['M4rkim','AniRap']],
+ ['Felícia Rock',['anime','rock','personagens'],['AniRap','Enygma']]
+];
+const $=s=>document.querySelector(s);
+let favorites=load('mdg_favorites',['AniRap','M4rkim','Enygma','Raphyx']);
+let playlist=load('mdg_playlist',[]);
+window.trackMap=Object.fromEntries(playlist.map(x=>[x.id,x]));
+let requestBusy=false;
+function load(k,f){try{return JSON.parse(localStorage.getItem(k))??f}catch{return f}}
+function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
+function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function cacheGet(k){try{let x=JSON.parse(sessionStorage.getItem('cache_'+k));if(x&&Date.now()-x.time<CACHE_MS)return x.data}catch{}return null}
+function cacheSet(k,data){try{sessionStorage.setItem('cache_'+k,JSON.stringify({time:Date.now(),data}))}catch{}}
+async function jsonFetch(url){const r=await fetch(url);if(!r.ok)throw Error('Serviço respondeu '+r.status);return r.json()}
+async function itunes(term,limit=20){let key='it_'+term.toLowerCase()+'_'+limit;let c=cacheGet(key);if(c)return c;let url=API_ITUNES+'?'+new URLSearchParams({term,entity:'song',limit:String(limit),country:'BR',explicit:'No'});let d=await jsonFetch(url);let rows=(d.results||[]).filter(x=>x.trackName&&x.artistName).map(x=>({id:'it-'+x.trackId,title:x.trackName,artist:x.artistName,album:x.collectionName||'',art:(x.artworkUrl100||'').replace('100x100','300x300'),preview:x.previewUrl||'',url:x.trackViewUrl||'',date:x.releaseDate||'',genre:x.primaryGenreName||'Rap',source:'iTunes'}));cacheSet(key,rows);return rows}
+async function audius(path){let d=await jsonFetch(API_AUDIUS+path+(path.includes('?')?'&':'?')+'app_name=MundoDosGeeks');return d.data||[]}
+function mapAudius(x){return{id:'au-'+x.id,title:x.title,artist:x.user?.name||'Artista Audius',album:'',art:x.artwork?.['150x150']||x.artwork?.['480x480']||'',preview:'',url:x.permalink||'https://audius.co',date:x.release_date||x.created_at||'',genre:(x.genre||'Música').replaceAll('_',' '),source:'Audius',plays:x.play_count||0}}
+function unique(rows){let seen=new Set();return rows.filter(x=>{let k=(x.title+'|'+x.artist).toLowerCase();if(seen.has(k))return false;seen.add(k);return true})}
+function card(x){let saved=playlist.some(p=>p.id===x.id);let cover=x.art?`<img class="art" loading="lazy" src="${esc(x.art)}" alt="Capa de ${esc(x.title)}" onerror="this.style.display='none'">`:`<div class="placeholder">🎼</div>`;let audio=x.preview?`<audio class="audio" controls preload="none" src="${esc(x.preview)}"></audio>`:'';return `<article class="card">${cover}<h3>${esc(x.title)}</h3><div class="meta">${esc(x.artist)}</div><div class="chips"><span class="chip">${esc(x.genre||'Rap Geek')}</span><span class="chip">${esc(x.source)}</span></div>${audio}<div class="card-actions"><button class="btn primary" onclick="toggleSave('${esc(x.id)}')">${saved?'✓ Salva':'＋ Playlist'}</button><button class="btn" onclick="openLyrics('${encodeURIComponent(x.title+' '+x.artist)}')">Letra ↗</button>${x.url?`<a class="btn" style="text-align:center;text-decoration:none" target="_blank" rel="noopener" href="${esc(x.url)}">Ouvir ↗</a>`:''}</div></article>`}
+function render(id,rows,empty='Nenhuma faixa encontrada.'){let el=$(id);el.innerHTML=rows.length?rows.map(card).join(''):`<div class="empty">${empty}</div>`}
+function status(id,msg,error=false){let el=$(id);el.textContent=msg;el.classList.toggle('error',error)}
+function toggleSave(id){let all=window.lastTracks||[];let track=all.find(x=>x.id===id)||window.trackMap?.[id];if(!track)return;if(playlist.some(x=>x.id===id))playlist=playlist.filter(x=>x.id!==id);else playlist.push(track);save('mdg_playlist',playlist);refreshViews()}
+function refreshViews(){render('#playlistGrid',playlist,'Sua playlist está vazia. Adicione músicas na aba Músicas.');$('#count').textContent=playlist.length+' '+(playlist.length===1?'faixa':'faixas');$('#playlistGrid').querySelectorAll('button').forEach(()=>{});if(window.currentLists)Object.values(window.currentLists).forEach(([sel,rows])=>render(sel,rows))}
+function remember(rows){window.trackMap=window.trackMap||{};rows.forEach(x=>window.trackMap[x.id]=x);window.lastTracks=rows}
+function showRows(id,rows){remember(rows);render(id,rows)}
+function renderArtists(){let el=$('#artistOptions');el.innerHTML=artistData.map(([name,themes])=>`<label class="artist"><input type="checkbox" value="${esc(name)}" ${favorites.includes(name)?'checked':''}><span><b>${esc(name)}</b><br><small class="muted">${esc(themes.slice(0,3).join(' • '))}</small></span></label>`).join('')}
+async function loadNew(){status('#newStatus','Buscando lançamentos...');try{let names=(favorites.length?favorites:['AniRap','M4rkim','Enygma','Raphyx']).slice(0,4);let parts=await Promise.all(names.map(n=>itunes(n,20).catch(()=>[])));let rows=unique(parts.flat()).sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,12);showRows('#newGrid',rows);status('#newStatus',rows.length?'Ordenado pela data de lançamento retornada pelo iTunes.':'Não encontramos resultados agora.',!rows.length)}catch(e){status('#newStatus','Não foi possível consultar o catálogo. Tente novamente mais tarde.',true);render('#newGrid',[],'O catálogo não respondeu.')} }
+async function loadHot(){status('#hotStatus','Consultando tendências do Audius...');try{let rows=(await audius('/tracks/trending?limit=12&time=week')).map(mapAudius);showRows('#hotGrid',rows);status('#hotStatus','Tendências da semana no Audius.')}catch(e){status('#hotStatus','O Audius não respondeu agora. Você pode tentar novamente.',true);render('#hotGrid',[],'Tendências indisponíveis no momento.')}}
+async function loadForYou(){status('#youStatus','Montando recomendações...');let selected=artistData.filter(a=>favorites.includes(a[0]));if(!selected.length){status('#youStatus','Escolha ao menos um artista para personalizar as recomendações.');render('#youGrid',[],'Abra “Meus artistas” e escolha seus favoritos.');return}try{let queries=[...new Set(selected.flatMap(a=>[a[0],...a[2]]))].slice(0,5);let parts=await Promise.all(queries.map(q=>itunes(q+' rap geek',12).catch(()=>[])));let rows=unique(parts.flat()).slice(0,12);showRows('#youGrid',rows);status('#youStatus',rows.length?'Sugestões encontradas a partir dos artistas escolhidos e de artistas relacionados.':'Não encontramos faixas correspondentes.')}catch(e){status('#youStatus','Não foi possível gerar recomendações agora.',true)}}
+async function searchCatalog(){let q=$('#catalogSearch').value.trim();if(!q)return;status('#searchStatus','Pesquisando...');try{let rows=await itunes(q,25);showRows('#searchGrid',rows);status('#searchStatus',rows.length?'Resultados do catálogo iTunes.':'Nenhum resultado para essa busca.')}catch(e){status('#searchStatus','Busca indisponível. Tente novamente.',true)}}
+function openLyrics(q){$('#lyricSearch').value=decodeURIComponent(q);document.querySelector('[data-page="lyrics"]').click();searchLyrics()}
+function searchLyrics(){let q=$('#lyricSearch').value.trim();if(!q)return;let url='https://www.google.com/search?q='+encodeURIComponent(q+' letra');$('#lyricResult').innerHTML=`<div class="lyricrow"><div><b>${esc(q)}</b><div class="meta">Pesquisar em fontes externas de letras</div></div><a class="btn primary" target="_blank" rel="noopener" href="${url}">Ver resultados ↗</a></div>`}
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===b.dataset.page))});
+function toggleArtistPanel(){let p=$('#artistPanel');p.hidden=!p.hidden;if(!p.hidden)renderArtists()}
+$('#artistShortcut').onclick=()=>{document.querySelector('[data-page="music"]').click();toggleArtistPanel()};
+$('#editArtists').onclick=toggleArtistPanel;
+$('#saveArtists').onclick=()=>{favorites=[...document.querySelectorAll('#artistOptions input:checked')].map(x=>x.value);save('mdg_favorites',favorites);$('#artistPanel').hidden=true;loadNew();loadForYou()};
+$('#refreshNew').onclick=loadNew;$('#refreshHot').onclick=loadHot;$('#refreshForYou').onclick=loadForYou;$('#doSearch').onclick=searchCatalog;$('#catalogSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchCatalog()});$('#lyricButton').onclick=searchLyrics;$('#lyricSearch').addEventListener('keydown',e=>{if(e.key==='Enter')searchLyrics()});
+$('#aboutButton').onclick=()=>$('#aboutDialog').showModal();$('#closeAbout').onclick=()=>$('#aboutDialog').close();
+window.currentLists={};refreshViews();loadNew();loadHot();loadForYou();
+</script>
+</body></html>
